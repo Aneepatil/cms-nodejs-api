@@ -24,7 +24,7 @@ adminRouter.post("/register", registerCtrl);
 adminRouter.post("/login", loginCtrl);
 adminRouter.get(
   "/",
-  isAuthenticated("admin"),
+  isAuthenticated(Admin),
   advancedResult(Admin),
   getAdminsCtrl
 );
