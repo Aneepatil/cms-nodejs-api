@@ -36,7 +36,7 @@ export const adminRegisterStudent = asyncHandler(async (req, res) => {
 
   //  Push teacher into admin model
 
-  admin.students.push(createStudent);
+  admin.students.push(createStudent)
   await admin.save();
 
   res.status(201).json({
@@ -79,7 +79,17 @@ export const loginStudent = asyncHandler(async (req, res) => {
 // @ Access Private Admin Only
 
 export const getAllStudentsByAdmin = asyncHandler(async (req, res) => {
-  res.status(200).json(res.result);
+  const students = await Student.find();
+
+   // Finding the total count of teachers
+   const totalstudents = await Student.countDocuments()
+
+  return res.json({
+    status: "Success",
+    message: "Teacher Logged-In Successfully",
+    totalstudents,
+    data: students,
+  });
 });
 
 // @ Desk Get Single Students
@@ -91,7 +101,7 @@ export const getStudentByAdmin = asyncHandler(async (req, res) => {
 
   return res.json({
     status: "Success",
-    message: "Teacher Logged-In Successfully",
+    message: "Admin Fetched Student Successfully",
     data: student,
   });
 });
