@@ -95,6 +95,8 @@ export const getAllStudentsByAdmin = asyncHandler(async (req, res) => {
 // @ Desk Get Single Students
 // @ Route GET api/v1/students/:studentID/admin
 // @ Access Private Admin Only
+// @ Access Private Admin Only
+
 
 export const getStudentByAdmin = asyncHandler(async (req, res) => {
   const student = await Student.findById(req.params.studentID);
